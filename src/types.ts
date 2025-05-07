@@ -23,5 +23,8 @@ export interface IndoorFeature {
   properties: {
     name: string;
     description: string;
+    fillColor?: string;
+    borderColor?: string;
+    [key: string]: any;
   };
 }

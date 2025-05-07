@@ -40,6 +40,10 @@ interface EntityListProps {
   editDescription: string;
   setEditName: (name: string) => void;
   setEditDescription: (desc: string) => void;
+  editFillColor: string;
+  setEditFillColor: (color: string) => void;
+  editBorderColor: string;
+  setEditBorderColor: (color: string) => void;
 }
 
 type Category = "basic" | "services" | "airport" | "building";
@@ -94,6 +98,10 @@ const EntityList = ({
   editDescription,
   setEditName,
   setEditDescription,
+  editFillColor,
+  setEditFillColor,
+  editBorderColor,
+  setEditBorderColor,
 }: EntityListProps) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [expandedCategories, setExpandedCategories] = useState<Category[]>([
@@ -243,6 +251,30 @@ const EntityList = ({
                               placeholder="Feature description"
                               className="feature-description-input"
                             />
+                            <div className="color-pickers-row">
+                              <label>
+                                BG
+                                <input
+                                  type="color"
+                                  value={editFillColor}
+                                  onChange={(e) =>
+                                    setEditFillColor(e.target.value)
+                                  }
+                                  className="color-picker"
+                                />
+                              </label>
+                              <label>
+                                Border
+                                <input
+                                  type="color"
+                                  value={editBorderColor}
+                                  onChange={(e) =>
+                                    setEditBorderColor(e.target.value)
+                                  }
+                                  className="color-picker"
+                                />
+                              </label>
+                            </div>
                             <div className="edit-buttons">
                               <button onClick={onSaveEdit}>Save</button>
                               <button onClick={onCancelEdit}>Cancel</button>

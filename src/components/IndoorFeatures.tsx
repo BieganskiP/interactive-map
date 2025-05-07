@@ -108,8 +108,8 @@ const IndoorFeatures = ({
   const getFeatureStyle = (feature: IndoorFeature) => {
     const baseStyle = {
       weight: 2,
-      opacity: 0.7,
-      color: "#000000",
+
+      color: feature.properties.borderColor || "#000000",
       fillOpacity: 0.2,
     };
 
@@ -117,79 +117,78 @@ const IndoorFeatures = ({
       case "room":
         return {
           ...baseStyle,
-          fillColor: "#4CAF50",
+          fillColor: feature.properties.fillColor || "#4CAF50",
         };
       case "corridor":
         return {
           ...baseStyle,
-          fillColor: "#9E9E9E",
+          fillColor: feature.properties.fillColor || "#9E9E9E",
         };
       case "stairs":
         return {
           ...baseStyle,
-          fillColor: "#FF9800",
+          fillColor: feature.properties.fillColor || "#FF9800",
         };
       case "elevator":
         return {
           ...baseStyle,
-          fillColor: "#2196F3",
+          fillColor: feature.properties.fillColor || "#2196F3",
         };
       case "shop":
         return {
           ...baseStyle,
-          fillColor: "#E91E63",
+          fillColor: feature.properties.fillColor || "#E91E63",
         };
       case "restaurant":
         return {
           ...baseStyle,
-          fillColor: "#F44336",
+          fillColor: feature.properties.fillColor || "#F44336",
         };
       case "lounge":
         return {
           ...baseStyle,
-          fillColor: "#9C27B0",
+          fillColor: feature.properties.fillColor || "#9C27B0",
         };
       case "terminal":
         return {
           ...baseStyle,
-          fillColor: "#3F51B5",
+          fillColor: feature.properties.fillColor || "#3F51B5",
         };
       case "gate":
         return {
           ...baseStyle,
-          fillColor: "#009688",
+          fillColor: feature.properties.fillColor || "#009688",
         };
       case "checkin":
         return {
           ...baseStyle,
-          fillColor: "#795548",
+          fillColor: feature.properties.fillColor || "#795548",
         };
       case "security":
         return {
           ...baseStyle,
-          fillColor: "#607D8B",
+          fillColor: feature.properties.fillColor || "#607D8B",
         };
       case "baggage":
         return {
           ...baseStyle,
-          fillColor: "#FFC107",
+          fillColor: feature.properties.fillColor || "#FFC107",
         };
       case "building":
         return {
           ...baseStyle,
-          fillOpacity: 0,
-          fillColor: undefined,
+          fillColor: feature.properties.fillColor || "#000000",
           weight: 3,
         };
       case "toilet":
         return {
           ...baseStyle,
-          fillColor: "#00BCD4",
+          fillColor: feature.properties.fillColor || "#00BCD4",
         };
       case "point":
         return {
           ...baseStyle,
-          fillColor: "#FF0000",
+          fillColor: feature.properties.fillColor || "#FF0000",
         };
       default:
         return baseStyle;

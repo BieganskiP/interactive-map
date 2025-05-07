@@ -81,6 +81,8 @@ const IndoorMap = ({
   const [editName, setEditName] = useState("");
   const [editDescription, setEditDescription] = useState("");
   const [editingCoords, setEditingCoords] = useState<[number, number][]>([]);
+  const [editFillColor, setEditFillColor] = useState("#4CAF50");
+  const [editBorderColor, setEditBorderColor] = useState("#000000");
 
   // Save features whenever they change
   useEffect(() => {
@@ -216,6 +218,8 @@ const IndoorMap = ({
     setEditingFeature(feature);
     setEditName(feature.properties.name);
     setEditDescription(feature.properties.description);
+    setEditFillColor(feature.properties.fillColor || "#4CAF50");
+    setEditBorderColor(feature.properties.borderColor || "#000000");
     setEditingCoords(feature.coordinates);
   };
 
@@ -230,6 +234,8 @@ const IndoorMap = ({
                 ...f.properties,
                 name: editName,
                 description: editDescription,
+                fillColor: editFillColor,
+                borderColor: editBorderColor,
               },
               coordinates: editingCoords,
             }
@@ -293,7 +299,7 @@ const IndoorMap = ({
     setSelectedFeatureId(feature?.id || null);
     if (feature && mapRef.current) {
       const center = calculateCenter(feature.coordinates);
-      mapRef.current.setView(center, 22);
+      mapRef.current.setView(center, 19);
     }
   };
 
@@ -309,7 +315,7 @@ const IndoorMap = ({
         zoom={initialZoom}
         style={{ height: "100vh", width: "100%" }}
         minZoom={15}
-        maxZoom={22}
+        maxZoom={19}
         zoomControl={false}
         ref={mapRef}
       >
@@ -317,7 +323,7 @@ const IndoorMap = ({
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          maxZoom={22}
+          maxZoom={19}
         />
         <MapController
           center={mapCenter}
@@ -382,6 +388,10 @@ const IndoorMap = ({
         editDescription={editDescription}
         setEditName={setEditName}
         setEditDescription={setEditDescription}
+        editFillColor={editFillColor}
+        setEditFillColor={setEditFillColor}
+        editBorderColor={editBorderColor}
+        setEditBorderColor={setEditBorderColor}
       />
     </div>
   );
